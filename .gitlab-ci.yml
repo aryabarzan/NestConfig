@@ -1,0 +1,47 @@
+variables:
+  TAG_COMMIT: $CI_COMMIT_SHORT_SHA
+  IMAGE_REPO: registry.gitlab.com/it-street/crowdswap-config
+  IMAGE_TAG: $CI_COMMIT_TAG
+
+stages:
+  - build
+  - deploy
+
+build_code:
+  stage: build
+  cache: []
+  script:
+    - time rm -r ./dist || true
+    - time rm -r ./package-lock.json || true
+    - time npm install
+    - time npm run --max_old_space_size=4096 build
+  rules:
+    # - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+
+deploy_on_demo:
+  cache: []
+  variables:
+    HELM_RELEASE: config-demo
+    ENV: demo
+    KUBECONFIG: $KUBECONFIG_FILE
+  stage: deploy
+  script:
+    - chmod +x ./deploy_kuber.sh
+    - ./deploy_kuber.sh
+  rules:
+    - if: "$CI_COMMIT_TAG != null && $CI_COMMIT_TAG =~ /^demo/"
+
+deploy_on_prod:
+  cache: []
+  variables:
+    HELM_RELEASE: config-prod
+    ENV: production
+    KUBECONFIG: $KUBECONFIG_FILE
+  stage: deploy
+  script:
+    - chmod +x ./deploy_kuber.sh
+    - ./deploy_kuber.sh
+  rules:
+    - if: "$CI_COMMIT_TAG != null && $CI_COMMIT_TAG =~ /^prod/"

@@ -1,0 +1,867 @@
+# # curl -X PUT "http://localhost:3000/config/buyback/development/myKey" \
+# #      -H "Content-Type: application/json" \
+# #      -d '{
+# #            "value": "newValue",
+# #            "comment": "My Config Display Name",
+# #            "group": "General"
+#         #  }'
+
+
+# # Debts Chain IDs
+# curl -X PUT "http://localhost:3000/config/buyback/demo/DEBTS_CHAIN_IDS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "42161,8453,56,1130,1,10,137,30",
+#            "comment": "Chain IDs included in debts, either as source or destination",
+#            "group": "debt"
+#          }'
+
+# # Pairs Chain IDs
+# curl -X PUT "http://localhost:3000/config/buyback/demo/PAIRS_CHAIN_IDS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "",
+#            "comment": "Chain IDs where Crowdswap has available pairs",
+#            "group": "pair"
+#          }'
+
+# # Buyback Chain IDs
+# curl -X PUT "http://localhost:3000/config/buyback/demo/BUYBACK_ANYWHERE_CHAIN_IDS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "",
+#            "comment": "Chains for buyback anywhere strategy",
+#            "group": "buyback"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/demo/BUYBACK_CROWD_BUY_CHAIN_IDS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "",
+#            "comment": "Chains for buyback crowd buy strategy",
+#            "group": "buyback"
+#          }'
+
+# # Profit and Conversion Chains
+# curl -X PUT "http://localhost:3000/config/buyback/demo/PROFIT_CHAIN_IDS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "",
+#            "comment": "Chain IDs used for transferring profits",
+#            "group": "profit"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/demo/CONVERT_CHAIN_IDS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "",
+#            "comment": "Chain IDs used for converting source tokens",
+#            "group": "convert"
+#          }'
+
+# # Response Timeout
+# curl -X PUT "http://localhost:3000/config/buyback/demo/CALL_API_TIMEOUT" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 5000,
+#            "comment": "Response timeout for an API request (ms)",
+#            "group": "api"
+#          }'
+
+# # Lock Durations
+# curl -X PUT "http://localhost:3000/config/buyback/demo/LOCK_DURATION_MS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 180000,
+#            "comment": "Lock duration of a debt",
+#            "group": "debt"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/demo/OFFERED_LOCK_DURATION_MS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 300000,
+#            "comment": "Lock duration of an offered debt",
+#            "group": "offer"
+#          }'
+
+# # Buyback Profit Percentages
+# curl -X PUT "http://localhost:3000/config/buyback/demo/BUYBACK_MIN_PROFIT_PERCENTAGE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 0,
+#            "comment": "Minimum expected profit of buyback (100 means 1%)",
+#            "group": "buyback"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/demo/CROSS_CHAIN_PROFIT_PERCENTAGE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 0,
+#            "comment": "Cross-chain profit percentage (100 means 1%)",
+#            "group": "crosschain"
+#          }'
+
+# Redis Cache Lifetime
+# curl -X PUT "http://localhost:3000/config/buyback/demo/CACHE_LIFE_TIME" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 600,
+#            "comment": "Cache lifetime in seconds",
+#            "group": "redis"
+#          }'
+
+# # White-listed Bridge IDs
+# curl -X PUT "http://localhost:3000/config/buyback/demo/WHITE_LISTED_BRIDGE_IDS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "",
+#            "comment": "White-listed bridge IDs",
+#            "group": "bridge"
+#          }'
+
+# # Market Maker Schedule
+# curl -X PUT "http://localhost:3000/config/buyback/demo/MARKET_MAKER_SCHEDULE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "0 */15 * * * *",
+#            "comment": "Cron schedule for market maker",
+#            "group": "market_maker"
+#          }'
+
+# Logging Settings
+# curl -X PUT "http://localhost:3000/config/buyback/demo/LOG_NOT_GOOD_RECIPE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "false",
+#            "comment": "Enable logging of all debts on all chains",
+#            "group": "logging"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/demo/LOG_All_RECIPE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "true",
+#            "comment": "Enable logging of all recipes",
+#            "group": "logging"
+#          }'
+
+# # Fees
+# curl -X PUT "http://localhost:3000/config/buyback/demo/AGGREGATOR_FEE_PERCENTAGE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 1,
+#            "comment": "Aggregator fee percentage (10 means 1%)",
+#            "group": "aggregator"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/demo/DEFAULT_DEX_FEE_PERCENTAGE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 3,
+#            "comment": "Default DEX fee percentage (10 means 1%)",
+#            "group": "dex"
+#          }'
+
+# # Buyback Configuration
+# curl -X PUT "http://localhost:3000/config/buyback/demo/BUYBACK_ON_TENDERLY" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": true,
+#            "comment": "Disable sending gasPrice during buyback",
+#            "group": "buyback"
+#          }'
+
+# # Trader Configuration
+# curl -X PUT "http://localhost:3000/config/buyback/demo/MIN_DEBT_PRICE_INCREASE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 5,
+#            "comment": "Minimum debt price increase",
+#            "group": "trader"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/demo/MIN_DEBT_PRICE_DECREASE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 5,
+#            "comment": "Minimum debt price decrease",
+#            "group": "trader"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/demo/SPLIT_RATIO" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "{\"ARBITRUM\":0.5,\"BASE\":0.5,\"BSCMAIN\":0.5,\"MAINNET\":0.5,\"OPTIMISM\":0.5,\"POLYGON_MAINNET\":0.5,\"ROOTSTOCK\":0.5}",
+#            "comment": "Split ratio for different chains",
+#            "group": "debt"
+#          }'
+
+
+# # Cross-chain profit percentages
+# curl -X PUT "http://localhost:3000/config/buyback/demo/CROSS_CHAIN_PROFIT_PERCENTAGE_CROWD_BY" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 1000,
+#            "comment": "Cross-chain profit percentage for crowd buy (100 = 1%)",
+#            "group": "crosschain"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/demo/CROSS_CHAIN_PROFIT_PERCENTAGE_DEFI" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 0,
+#            "comment": "Cross-chain profit percentage for DeFi (100 = 1%)",
+#            "group": "crosschain"
+#          }'
+
+# # Transaction Response Timeout
+# curl -X PUT "http://localhost:3000/config/buyback/demo/TRANSACTION_RESPONSE_TIME_OUT" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 120000,
+#            "comment": "Transaction response timeout (ms)",
+#            "group": "transaction"
+#          }'
+
+# # # Fees Configuration
+# curl -X PUT "http://localhost:3000/config/buyback/demo/CROWD_DEX_FEE_PERCENTAGE_FOR_QUOTE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "{\"ARBITRUM\":10,\"BASE\":10,\"BSCMAIN\":10,\"DEFI\":10,\"MAINNET\":10,\"OPTIMISM\":10,\"POLYGON_MAINNET\":10,\"ROOTSTOCK\":10}",
+#            "comment": "Crowd DEX fee percentage for quotes (10 = 1%)",
+#            "group": "dex"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/demo/CROWD_DEX_FEE_PERCENTAGE_FOR_SWAP" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "{\"ARBITRUM\":0,\"BASE\":0,\"BSCMAIN\":0,\"DEFI\":10,\"MAINNET\":10,\"OPTIMISM\":10,\"POLYGON_MAINNET\":0,\"ROOTSTOCK\":0}",
+#            "comment": "Crowd DEX fee percentage for swaps (10 = 1%)",
+#            "group": "dex"
+#          }'
+
+# # Logging Configuration
+# curl -X PUT "http://localhost:3000/config/buyback/demo/LOG_BEST_RECIPE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": true,
+#            "comment": "Log the best recipe on every check",
+#            "group": "logging"
+#          }'
+
+# # Trader Configuration
+# curl -X PUT "http://localhost:3000/config/buyback/demo/MIN_DEBT_VALUE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 10,
+#            "comment": "Minimum debt value",
+#            "group": "trader"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/demo/BUY_OFFERED_DEBT_DISCOUNT" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "995,990,985,980,975",
+#            "comment": "Buy offered debt discount values",
+#            "group": "trader"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/demo/SELL_OFFERED_DEBT_DISCOUNT" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "995,990,985,980,975",
+#            "comment": "Sell offered debt discount values",
+#            "group": "trader"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/demo/MAX_SET_OFFER_RETRIES" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 3,
+#            "comment": "Maximum retries for setting offer",
+#            "group": "trader"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/demo/DEBT_RESERVATION_PERIOD_FOR_TRADE_MINUTES" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 360,
+#            "comment": "Debt reservation period for trading (minutes)",
+#            "group": "trading"
+#          }'
+
+# ------------------------------- production
+
+# Debts Chain IDs
+# curl -X PUT "http://localhost:3000/config/buyback/production/DEBTS_CHAIN_IDS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "42161,8453,56,1130,1,10,137,30",
+#            "comment": "Chain IDs included in debts, either as source or destination",
+#            "group": "debt"
+#          }'
+
+# # Pairs Chain IDs
+# curl -X PUT "http://localhost:3000/config/buyback/production/PAIRS_CHAIN_IDS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "42161,8453,56,1130,1,10,137,30",
+#            "comment": "Chain IDs where Crowdswap has available pairs",
+#            "group": "pair"
+#          }'
+
+# # Buyback Chain IDs
+# curl -X PUT "http://localhost:3000/config/buyback/production/BUYBACK_ANYWHERE_CHAIN_IDS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "42161,8453,56,1,137",
+#            "comment": "Chains for buyback anywhere strategy",
+#            "group": "buyback"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/production/BUYBACK_CROWD_BUY_CHAIN_IDS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "42161,8453,56,10,137",
+#            "comment": "Chains for buyback crowd buy strategy",
+#            "group": "buyback"
+#          }'
+
+# # Profit and Conversion Chains
+# curl -X PUT "http://localhost:3000/config/buyback/production/PROFIT_CHAIN_IDS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "42161,8453,56,1130,1,10,137,30",
+#            "comment": "Chain IDs used for transferring profits",
+#            "group": "profit"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/production/CONVERT_CHAIN_IDS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "42161,8453,56,1,10,137,30",
+#            "comment": "Chain IDs used for converting source tokens",
+#            "group": "convert"
+#          }'
+
+# # # Response Timeout
+# curl -X PUT "http://localhost:3000/config/buyback/production/CALL_API_TIMEOUT" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 5000,
+#            "comment": "Response timeout for an API request (ms)",
+#            "group": "api"
+#          }'
+
+# # Lock Durations
+# curl -X PUT "http://localhost:3000/config/buyback/production/LOCK_DURATION_MS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 180000,
+#            "comment": "Lock duration of a debt",
+#            "group": "debt"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/production/OFFERED_LOCK_DURATION_MS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 300000,
+#            "comment": "Lock duration of an offered debt",
+#            "group": "offer"
+#          }'
+
+# # Buyback Profit Percentages
+# curl -X PUT "http://localhost:3000/config/buyback/production/BUYBACK_MIN_PROFIT_PERCENTAGE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 0,
+#            "comment": "Minimum expected profit of buyback (100 means 1%)",
+#            "group": "buyback"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/production/CROSS_CHAIN_PROFIT_PERCENTAGE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 0,
+#            "comment": "Cross-chain profit percentage (100 means 1%)",
+#            "group": "crosschain"
+#          }'
+
+# Redis Cache Lifetime
+# curl -X PUT "http://localhost:3000/config/buyback/production/CACHE_LIFE_TIME" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 600,
+#            "comment": "Cache lifetime in seconds",
+#            "group": "redis"
+#          }'
+
+# White-listed Bridge IDs
+# curl -X PUT "http://localhost:3000/config/buyback/production/WHITE_LISTED_BRIDGE_IDS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "324,137,56,42161",
+#            "comment": "White-listed bridge IDs",
+#            "group": "bridge"
+#          }'
+
+# # Market Maker Schedule
+# curl -X PUT "http://localhost:3000/config/buyback/production/MARKET_MAKER_SCHEDULE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "0 */15 * * * *",
+#            "comment": "Cron schedule for market maker",
+#            "group": "market_maker"
+#          }'
+
+# Logging Settings
+# curl -X PUT "http://localhost:3000/config/buyback/production/LOG_NOT_GOOD_RECIPE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "false",
+#            "comment": "Enable logging of all debts on all chains",
+#            "group": "logging"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/production/LOG_All_RECIPE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "false",
+#            "comment": "Enable logging of all recipes",
+#            "group": "logging"
+#          }'
+
+# # Fees
+# curl -X PUT "http://localhost:3000/config/buyback/production/AGGREGATOR_FEE_PERCENTAGE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 1,
+#            "comment": "Aggregator fee percentage (10 means 1%)",
+#            "group": "aggregator"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/production/DEFAULT_DEX_FEE_PERCENTAGE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 3,
+#            "comment": "Default DEX fee percentage (10 means 1%)",
+#            "group": "dex"
+#          }'
+
+# # Buyback Configuration
+# curl -X PUT "http://localhost:3000/config/buyback/production/BUYBACK_ON_TENDERLY" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "false",
+#            "comment": "Disable sending gasPrice during buyback",
+#            "group": "buyback"
+#          }'
+
+# # Trader Configuration
+# curl -X PUT "http://localhost:3000/config/buyback/production/MIN_DEBT_PRICE_INCREASE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 2,
+#            "comment": "Minimum debt price increase",
+#            "group": "trader"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/production/MIN_DEBT_PRICE_DECREASE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 2,
+#            "comment": "Minimum debt price decrease",
+#            "group": "trader"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/production/SPLIT_RATIO" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "{\"ARBITRUM\":0.5,\"BASE\":0.5,\"BSCMAIN\":0.5,\"MAINNET\":0.5,\"OPTIMISM\":0.5,\"POLYGON_MAINNET\":0.5,\"ROOTSTOCK\":0.5}",
+#            "comment": "Split ratio for different chains",
+#            "group": "debt"
+#          }'
+
+
+# # Cross-chain profit percentages
+# curl -X PUT "http://localhost:3000/config/buyback/production/CROSS_CHAIN_PROFIT_PERCENTAGE_CROWD_BY" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 1000,
+#            "comment": "Cross-chain profit percentage for crowd buy (100 = 1%)",
+#            "group": "crosschain"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/production/CROSS_CHAIN_PROFIT_PERCENTAGE_DEFI" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 0,
+#            "comment": "Cross-chain profit percentage for DeFi (100 = 1%)",
+#            "group": "crosschain"
+#          }'
+
+# # Transaction Response Timeout
+# curl -X PUT "http://localhost:3000/config/buyback/production/TRANSACTION_RESPONSE_TIME_OUT" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 120000,
+#            "comment": "Transaction response timeout (ms)",
+#            "group": "transaction"
+#          }'
+
+# # # Fees Configuration
+# curl -X PUT "http://localhost:3000/config/buyback/production/CROWD_DEX_FEE_PERCENTAGE_FOR_QUOTE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "{\"ARBITRUM\":10,\"BASE\":10,\"BSCMAIN\":10,\"DEFI\":10,\"MAINNET\":10,\"OPTIMISM\":10,\"POLYGON_MAINNET\":10,\"ROOTSTOCK\":10}",
+#            "comment": "Crowd DEX fee percentage for quotes (10 = 1%)",
+#            "group": "dex"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/production/CROWD_DEX_FEE_PERCENTAGE_FOR_SWAP" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "{\"ARBITRUM\":0,\"BASE\":0,\"BSCMAIN\":0,\"DEFI\":10,\"MAINNET\":10,\"OPTIMISM\":10,\"POLYGON_MAINNET\":0,\"ROOTSTOCK\":0}",
+#            "comment": "Crowd DEX fee percentage for swaps (10 = 1%)",
+#            "group": "dex"
+#          }'
+
+# # Logging Configuration
+# curl -X PUT "http://localhost:3000/config/buyback/production/LOG_BEST_RECIPE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "true",
+#            "comment": "Log the best recipe on every check",
+#            "group": "logging"
+#          }'
+
+# # Trader Configuration
+# curl -X PUT "http://localhost:3000/config/buyback/production/MIN_DEBT_VALUE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 10,
+#            "comment": "Minimum debt value",
+#            "group": "trader"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/production/BUY_OFFERED_DEBT_DISCOUNT" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "995,990,985,980,975",
+#            "comment": "Buy offered debt discount values",
+#            "group": "trader"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/production/SELL_OFFERED_DEBT_DISCOUNT" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "995,990,985,980,975",
+#            "comment": "Sell offered debt discount values",
+#            "group": "trader"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/production/MAX_SET_OFFER_RETRIES" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 3,
+#            "comment": "Maximum retries for setting offer",
+#            "group": "trader"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/production/DEBT_RESERVATION_PERIOD_FOR_TRADE_MINUTES" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 360,
+#            "comment": "Debt reservation period for trading (minutes)",
+#            "group": "trading"
+#          }'
+
+
+# ------------------------------- development
+
+# Debts Chain IDs
+# curl -X PUT "http://localhost:3000/config/buyback/development/DEBTS_CHAIN_IDS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "42161,8453,56,1130,1,10,137,30",
+#            "comment": "Chain IDs included in debts, either as source or destination",
+#            "group": "debt"
+#          }'
+
+# # Pairs Chain IDs
+# curl -X PUT "http://localhost:3000/config/buyback/development/PAIRS_CHAIN_IDS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "42161,8453,56,1130,1,10,137,30",
+#            "comment": "Chain IDs where Crowdswap has available pairs",
+#            "group": "pair"
+#          }'
+
+# # Buyback Chain IDs
+# curl -X PUT "http://localhost:3000/config/buyback/development/BUYBACK_ANYWHERE_CHAIN_IDS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "42161,8453,56,1,137",
+#            "comment": "Chains for buyback anywhere strategy",
+#            "group": "buyback"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/development/BUYBACK_CROWD_BUY_CHAIN_IDS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "42161,8453,56,10,137",
+#            "comment": "Chains for buyback crowd buy strategy",
+#            "group": "buyback"
+#          }'
+
+# # Profit and Conversion Chains
+# curl -X PUT "http://localhost:3000/config/buyback/development/PROFIT_CHAIN_IDS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "42161,8453,56,1130,1,10,137,30",
+#            "comment": "Chain IDs used for transferring profits",
+#            "group": "profit"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/development/CONVERT_CHAIN_IDS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "42161,8453,56,1,10,137,30",
+#            "comment": "Chain IDs used for converting source tokens",
+#            "group": "convert"
+#          }'
+
+# # # Response Timeout
+# curl -X PUT "http://localhost:3000/config/buyback/development/CALL_API_TIMEOUT" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 5000,
+#            "comment": "Response timeout for an API request (ms)",
+#            "group": "api"
+#          }'
+
+# # Lock Durations
+# curl -X PUT "http://localhost:3000/config/buyback/development/LOCK_DURATION_MS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 180000,
+#            "comment": "Lock duration of a debt",
+#            "group": "debt"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/development/OFFERED_LOCK_DURATION_MS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 300000,
+#            "comment": "Lock duration of an offered debt",
+#            "group": "offer"
+#          }'
+
+# # Buyback Profit Percentages
+# curl -X PUT "http://localhost:3000/config/buyback/development/BUYBACK_MIN_PROFIT_PERCENTAGE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 0,
+#            "comment": "Minimum expected profit of buyback (100 means 1%)",
+#            "group": "buyback"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/development/CROSS_CHAIN_PROFIT_PERCENTAGE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 100,
+#            "comment": "Cross-chain profit percentage (100 means 1%)",
+#            "group": "crosschain"
+#          }'
+
+# Redis Cache Lifetime
+# curl -X PUT "http://localhost:3000/config/buyback/development/CACHE_LIFE_TIME" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 600,
+#            "comment": "Cache lifetime in seconds",
+#            "group": "redis"
+#          }'
+
+# White-listed Bridge IDs
+# curl -X PUT "http://localhost:3000/config/buyback/development/WHITE_LISTED_BRIDGE_IDS" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "324,137",
+#            "comment": "White-listed bridge IDs",
+#            "group": "bridge"
+#          }'
+
+# # Market Maker Schedule
+# curl -X PUT "http://localhost:3000/config/buyback/development/MARKET_MAKER_SCHEDULE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "0 */15 * * * *",
+#            "comment": "Cron schedule for market maker",
+#            "group": "market_maker"
+#          }'
+
+# Logging Settings
+# curl -X PUT "http://localhost:3000/config/buyback/development/LOG_NOT_GOOD_RECIPE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "false",
+#            "comment": "Enable logging of all debts on all chains",
+#            "group": "logging"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/development/LOG_All_RECIPE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "false",
+#            "comment": "Enable logging of all recipes",
+#            "group": "logging"
+#          }'
+
+# # Fees
+# curl -X PUT "http://localhost:3000/config/buyback/development/AGGREGATOR_FEE_PERCENTAGE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 1,
+#            "comment": "Aggregator fee percentage (10 means 1%)",
+#            "group": "aggregator"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/development/DEFAULT_DEX_FEE_PERCENTAGE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 3,
+#            "comment": "Default DEX fee percentage (10 means 1%)",
+#            "group": "dex"
+#          }'
+
+# # Buyback Configuration
+# curl -X PUT "http://localhost:3000/config/buyback/development/BUYBACK_ON_TENDERLY" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "false",
+#            "comment": "Disable sending gasPrice during buyback",
+#            "group": "buyback"
+#          }'
+
+# # Trader Configuration
+# curl -X PUT "http://localhost:3000/config/buyback/development/MIN_DEBT_PRICE_INCREASE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 5,
+#            "comment": "Minimum debt price increase",
+#            "group": "trader"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/development/MIN_DEBT_PRICE_DECREASE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 5,
+#            "comment": "Minimum debt price decrease",
+#            "group": "trader"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/development/SPLIT_RATIO" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "{\"ARBITRUM\":0.5,\"BASE\":0.5,\"BSCMAIN\":0.5,\"MAINNET\":0.5,\"OPTIMISM\":0.5,\"POLYGON_MAINNET\":0.5,\"ROOTSTOCK\":0.5}",
+#            "comment": "Split ratio for different chains",
+#            "group": "debt"
+#          }'
+
+
+# # Cross-chain profit percentages
+# curl -X PUT "http://localhost:3000/config/buyback/development/CROSS_CHAIN_PROFIT_PERCENTAGE_CROWD_BY" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 1000,
+#            "comment": "Cross-chain profit percentage for crowd buy (100 = 1%)",
+#            "group": "crosschain"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/development/CROSS_CHAIN_PROFIT_PERCENTAGE_DEFI" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 0,
+#            "comment": "Cross-chain profit percentage for DeFi (100 = 1%)",
+#            "group": "crosschain"
+#          }'
+
+# # # Transaction Response Timeout
+# curl -X PUT "http://localhost:3000/config/buyback/development/TRANSACTION_RESPONSE_TIME_OUT" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 120000,
+#            "comment": "Transaction response timeout (ms)",
+#            "group": "transaction"
+#          }'
+
+# # # Fees Configuration
+# curl -X PUT "http://localhost:3000/config/buyback/development/CROWD_DEX_FEE_PERCENTAGE_FOR_QUOTE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "{\"ARBITRUM\":10,\"BASE\":10,\"BSCMAIN\":10,\"DEFI\":10,\"MAINNET\":10,\"OPTIMISM\":10,\"POLYGON_MAINNET\":10,\"ROOTSTOCK\":10}",
+#            "comment": "Crowd DEX fee percentage for quotes (10 = 1%)",
+#            "group": "dex"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/development/CROWD_DEX_FEE_PERCENTAGE_FOR_SWAP" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "{\"ARBITRUM\":0,\"BASE\":0,\"BSCMAIN\":0,\"DEFI\":10,\"MAINNET\":10,\"OPTIMISM\":10,\"POLYGON_MAINNET\":0,\"ROOTSTOCK\":0}",
+#            "comment": "Crowd DEX fee percentage for swaps (10 = 1%)",
+#            "group": "dex"
+#          }'
+
+# # Logging Configuration
+# curl -X PUT "http://localhost:3000/config/buyback/development/LOG_BEST_RECIPE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "true",
+#            "comment": "Log the best recipe on every check",
+#            "group": "logging"
+#          }'
+
+# # Trader Configuration
+# curl -X PUT "http://localhost:3000/config/buyback/development/MIN_DEBT_VALUE" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 10,
+#            "comment": "Minimum debt value",
+#            "group": "trader"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/development/BUY_OFFERED_DEBT_DISCOUNT" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "995,990,985,980,975",
+#            "comment": "Buy offered debt discount values",
+#            "group": "trader"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/development/SELL_OFFERED_DEBT_DISCOUNT" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": "995,990,985,980,975",
+#            "comment": "Sell offered debt discount values",
+#            "group": "trader"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/development/MAX_SET_OFFER_RETRIES" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 3,
+#            "comment": "Maximum retries for setting offer",
+#            "group": "trader"
+#          }'
+
+# curl -X PUT "http://localhost:3000/config/buyback/development/DEBT_RESERVATION_PERIOD_FOR_TRADE_MINUTES" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#            "value": 360,
+#            "comment": "Debt reservation period for trading (minutes)",
+#            "group": "trading"
+#          }'
+
+
